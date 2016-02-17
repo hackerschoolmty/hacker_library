@@ -19,6 +19,21 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
+
+  <div class="field">
+    <%= f.label :role %><br>
+    <%= f.select :role, [[t(:admin), "admin"], [t(:regular), "regular"]] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

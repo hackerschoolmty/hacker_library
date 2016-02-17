@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="large-8 columns">
-  <h1 class="title">Listing Books</h1>
+  <h1 class="title"><%= t(:listing_books) %></h1>
 </div>
 <div class="large-2 columns float-right">
   <% if user_signed_in? %>
-    <%= link_to 'New Book', new_book_path, class: "button radius" %>
+    <%= link_to t(:new_book), new_book_path, class: "button radius" %>
   <% end %>
 
 </div>
@@ -28,9 +28,9 @@
         <td><%= book.author %></td>
         <td><%= book.slug %></td>
         <% if user_signed_in? %>
-          <td><%= link_to 'Show', book %></td>
-          <td><%= link_to 'Edit', edit_book_path(book) %></td>
-          <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to t(:show), book %></td>
+          <td><%= link_to t(:edit), edit_book_path(book) %></td>
+          <td><%= link_to t(:delete), book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

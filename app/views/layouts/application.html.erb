@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<% locale = I18n.locale %>
+<html lang=<%= locale %>>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,17 +23,17 @@
       <section class="top-bar-section">
         <ul>
           <li class="divider"></li>
-          <li><%= link_to "Usuarios", users_path %></li>
+          <li><%= link_to t(:users), users_path %></li>
         </ul>
         <ul class="right">
           <li class="divider"></li>
            <% if user_signed_in? %>
              <li><%= link_to current_user.email, edit_user_registration_path %></li>
              <li class="divider"></li>
-             <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+             <li><%= link_to t(:logout), destroy_user_session_path, method: :delete %></li>
            <% else %>
-            <li><%= link_to "Login", new_user_session_path  %></li>
-            <li><%= link_to "Sign up", new_user_registration_path  %></li>
+            <li><%= link_to  t(:login), new_user_session_path  %></li>
+            <li><%= link_to t(:sign_up), new_user_registration_path  %></li>
            <% end %>
          </ul>
         </div>
@@ -41,6 +42,16 @@
       <%= yield %>
     </div>
     
+    <footer>
+      <br/>
+      <div class="row full-width">
+        <small>&copy; Hackerschool 2016</small>
+        <div class="callout clearfix">
+          <small><%= link_to t(:english), params.merge(locale: "en") %></small>
+          <small><%= link_to t(:spanish), params.merge(locale: "es") %></small>
+        </div>
+      </div>
+    </footer>
 
   </body>
 </html>

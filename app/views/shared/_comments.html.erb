@@ -5,7 +5,9 @@
 	</small>
 	<p>
 		<%= comment.description %>
-		<small><%= link_to "Eliminar", book_comment_path(@book, comment), method: :delete, data: {confirm: "¿estás seguro?"}, remote: true %></small>
+		<% if can? :delete, comment %>
+			<small><%= link_to "Eliminar", book_comment_path(@book, comment), method: :delete, data: {confirm: "¿estás seguro?"}, remote: true %></small>
+		<% end %>
 	</p>
 	
 </div>

@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h3><%= @book.name %></h3>
+<h3><%= t(:book_name, name: @book.name )  %></h3>
 
 <p>
   <strong>Author:</strong>
@@ -17,6 +17,12 @@
 </p>
 
 
+<p>
+  <strong>Created at:</strong>
+  <%= l @book.created_at, format: :detailed %>
+</p>
+
+
 <%= link_to 'Edit', edit_book_path(@book), class: "button success small" %> 
 <%= link_to 'Back', books_path, class: "button secondary small" %>
 
@@ -28,16 +34,17 @@
 	<% end %>
 
 </div>
+<% if can? :create, Comment %>
+  <h4>Agregar comentario</h4>
+  <%= form_for [@book, @book.comments.new], remote: true do |f| %>
+  	<%= f.hidden_field :book_id, value: @book.id %>
+  	<%= f.hidden_field :user_id, value: current_user.id %>
 
-<h4>Agregar comentario</h4>
-<%= form_for [@book, @book.comments.new], remote: true do |f| %>
-	<%= f.hidden_field :book_id, value: @book.id %>
-	<%= f.hidden_field :user_id, value: current_user.id %>
-
-  <div class="field">
-    <%= f.text_area :description, rows: 5, cols: 5 %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Agregar", class: "button small" %>
-  </div>
+    <div class="field">
+      <%= f.text_area :description, rows: 5, cols: 5 %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Agregar", class: "button small" %>
+    </div>
+  <% end %>
 <% end %>
