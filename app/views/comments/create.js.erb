@@ -1,0 +1,3 @@
+console.log("Agregando...")
+$("#comments_section").append("<%= escape_javascript(render 'shared/comments', comment: @comment)%>")
+$("#new_comment")[0].reset()

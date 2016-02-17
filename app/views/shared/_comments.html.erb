@@ -1,0 +1,11 @@
+<div id="comment_<%= comment.id %>">
+	<b><%= comment.user.name %></b>
+	<small>
+		<i><%= comment.created_at %></i>
+	</small>
+	<p>
+		<%= comment.description %>
+		<small><%= link_to "Eliminar", book_comment_path(@book, comment), method: :delete, data: {confirm: "¿estás seguro?"}, remote: true %></small>
+	</p>
+	
+</div>
