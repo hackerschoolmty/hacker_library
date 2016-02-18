@@ -8,9 +8,10 @@ class Ability
       can :manage, Book
     elsif user.regular?
       can :manage, Comment, user_id: user.id
-      can :read, Book
+      
     end
     can :read, Comment
+    can :read, Book
   end
 
 
