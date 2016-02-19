@@ -7,6 +7,10 @@ class Book < ActiveRecord::Base
   before_save :verify_slug_field
   before_destroy :verify_if_can_be_destroyed
 
+  def self.by_letter letter
+    where("name LIKE ?", "%#{letter}%")
+  end
+
   private
 
   def verify_slug_field
