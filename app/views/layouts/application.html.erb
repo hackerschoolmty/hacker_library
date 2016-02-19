@@ -21,10 +21,16 @@
        </li>
       </ul>
       <section class="top-bar-section">
-        <ul>
-          <li class="divider"></li>
-          <li><%= link_to t(:users), users_path %></li>
-        </ul>
+        <% if user_signed_in? %>
+          <ul>
+            <li class="divider"></li>
+            <li><%= link_to t(:users), users_path %></li>
+          </ul>
+          <ul>
+            <li class="divider"></li>
+            <li><%= link_to "Imágenes", pictures_path %></li>
+          </ul>
+        <% end %>
         <ul class="right">
           <li class="divider"></li>
            <% if user_signed_in? %>

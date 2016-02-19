@@ -27,6 +27,8 @@ gem 'haml'
 gem 'foundation-rails', '~> 5.5.1.2'
 gem 'cancancan'
 gem 'remotipart', '~> 1.2'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

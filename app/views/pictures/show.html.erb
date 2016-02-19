@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<div class="small-4 columns">
+	<%= image_tag(@picture.image_url, class: "thumbnail") %>
+
+</div>	
+
+<div class="small-4 columns">
+	<%= image_tag(@picture.image_url(:thumb), class: "thumbnail") %>
+
+</div>
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>
