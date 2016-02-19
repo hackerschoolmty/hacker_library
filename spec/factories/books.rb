@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :book do
-    name "Cosme"
-    author "author"
-    description "holi"
+    name { Faker::Book.title }
+    author { Faker::Name.name }
+    description { Faker::Lorem.sentence(3) }
     sequence(:slug) {|n| "123123_#{n}"} 
 
     factory :rails_book do
