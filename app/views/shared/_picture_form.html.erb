@@ -1,0 +1,13 @@
+<%= form_for Picture.new, remote: true, html: {multipart: true} do |f| %>
+
+  <%= f.hidden_field :picturable_id, value: picturable_id %>
+  <%= f.hidden_field :picturable_type, value: picturable_type %>
+
+  <div class="field">
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Guardar", class: "button small" %>
+  </div>
+<% end %>

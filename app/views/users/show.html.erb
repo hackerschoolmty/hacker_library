@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
+<h3><%= @user.name %></h3>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
 
 <p>
   <strong>Email:</strong>
@@ -15,5 +12,14 @@
   <%= t @user.role %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_user_path(@user), class: "button success small" %> |
+<%= link_to 'Back', users_path, class: "button secondary small" %>
+
+
+<hr>
+<h3>Imágenes</h3>
+
+
+<%= render 'shared/picture_form',picturable_id: @user.id, picturable_type: "User" %>
+
+<%= render 'shared/pictures', pictures: @pictures %>

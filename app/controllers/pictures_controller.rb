@@ -25,11 +25,12 @@ class PicturesController < ApplicationController
   # POST /pictures.json
   def create
     @picture = Picture.new(picture_params)
-
+   
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        format.html { redirect_to book_path(@picture.picturable), notice: 'Picture was successfully created.' }
         format.json { render :show, status: :created, location: @picture }
+        format.js {}
       else
         format.html { render :new }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
@@ -58,6 +59,7 @@ class PicturesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to pictures_url, notice: 'Picture was successfully destroyed.' }
       format.json { head :no_content }
+      format.js {}
     end
   end
 
@@ -69,6 +71,6 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params.require(:picture).permit(:book_id, :image)
+      params.require(:picture).permit(:picturable_type, :picturable_id, :image)
     end
 end

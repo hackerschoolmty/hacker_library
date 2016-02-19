@@ -28,7 +28,7 @@
 
 
 <h3>Comentarios</h3>
-<div id="comments_section">
+<div id="comments_section"> 
 	<% @comments.each do |comment| %>
 		<%= render 'shared/comments', comment: comment %>
 	<% end %>
@@ -48,3 +48,10 @@
     </div>
   <% end %>
 <% end %>
+
+<hr>
+<h3>Imágenes</h3>
+
+<%= render 'shared/picture_form',picturable_id: @book.id, picturable_type: "Book" %>
+
+<%= render 'shared/pictures', pictures: @pictures %>
