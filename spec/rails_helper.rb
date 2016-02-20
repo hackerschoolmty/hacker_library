@@ -4,6 +4,8 @@ require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/collection_matchers'
+require 'capybara/rspec'
+require_relative 'support/login_macro'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -50,8 +52,10 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
+  config.include LoginMacro
 end
 
+Capybara.default_driver = :selenium
 
 def sign_in_as_admin
   Rails.cache.clear
@@ -64,4 +68,14 @@ def sign_in_as_regular
   @user = create(:regular_user)
   sign_in @user
 end
+
+class ActiveRecord::Base  
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+
+  def self.connection
+    @@shared_connection || retrieve_connection
+  end
+end  
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
 

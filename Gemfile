@@ -61,5 +61,7 @@ group :test do
   gem "database_cleaner" 
   gem 'rspec-collection_matchers'
   gem "capybara-selenium"
+  gem "launchy"
+ gem 'guard-rspec', require: false
 end
 
