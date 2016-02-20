@@ -49,6 +49,19 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
   config.include FactoryGirl::Syntax::Methods
+  config.include Devise::TestHelpers, type: :controller
 end
 
+
+def sign_in_as_admin
+  Rails.cache.clear
+  @user = create(:user)
+  sign_in @user
+end
+
+def sign_in_as_regular 
+  Rails.cache.clear
+  @user = create(:regular_user)
+  sign_in @user
+end
 

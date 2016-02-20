@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_book
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
@@ -55,6 +56,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+ 
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to book_comments_url(@book), notice: 'Comment was successfully destroyed.' }
