@@ -30,6 +30,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        NotificationMailer.add_comment_notification(@book, @comment).deliver
         format.html { redirect_to book_path(@book) }
         format.js {}
       else
