@@ -29,6 +29,8 @@ gem 'cancancan'
 gem 'remotipart', '~> 1.2'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'sidekiq'
+gem 'sinatra', :require => nil
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -30,7 +30,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        NotificationMailer.add_comment_notification(@book, @comment).deliver
+        NotificationJob.set(wait: 1.minute).perform_later(@book.id, @comment.id)
+       # NotificationMailer.add_comment_notification(@book, @comment).deliver
         format.html { redirect_to book_path(@book) }
         format.js {}
       else

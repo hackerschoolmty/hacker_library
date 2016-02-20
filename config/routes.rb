@@ -1,11 +1,15 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   resources :pictures
   devise_for :users
+
+
   scope '(:locale)' do
     resources :users
     resources :books do
       resources :comments
     end
+    mount Sidekiq::Web => '/sidekiq'
     root to: "books#index"
   end
   # The priority is based upon order of creation: first created -> highest priority.
